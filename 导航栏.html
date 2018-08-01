@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-3.2.1.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: 0;
+        }
+        body{
+            background-color: pink;
+        }
+        #top{
+            width:700px;
+            height: 69px;
+            background: white url("img/bdf.png") no-repeat right center;
+            border-radius: 8px;
+            position: relative;
+            margin: 100px auto;
+        }
+        #content{
+            width: 650px;
+            height: 100%;
+            position: relative;
+        }
+        #content li{
+            float: left;
+            /*margin-left: 45px;*/
+            height: 69px;
+            width: 67px;
+            text-align: center;
+            line-height: 69px;
+            cursor: pointer;
+        }
+        #bg{
+            display: inline-block;
+            width: 67px;
+            height: 66px;
+            background: url("img/bdt.png") no-repeat;
+            position: absolute;
+            left: 45px;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="top">
+    <span id="bg"></span>
+    <ul id="content">
+        <li>小希希</li>
+        <li>小嘻嘻</li>
+        <li>小白包</li>
+        <li>小油条</li>
+        <li>小黑呀</li>
+        <li>小希希</li>
+        <li>小嘻嘻</li>
+        <li>小白包</li>
+        <li>小油条</li>
+    </ul>
+</div>
+<script>
+
+var span = document.getElementById("bg");
+    $(function(){
+        var beginX =0;
+        $("#content>li").mouseenter(function(){
+          ends = $(this).get(0).offsetLeft;
+            console.log(ends);
+        });
+        $("#content>li").mouseleave(function(){
+            ends=beginX;
+        });
+        $("#content>li").mousedown(function(){
+            beginX=$(this).get(0).offsetLeft;
+        });
+
+            var begins =45;
+            var ends =0;
+            setInterval(function(){
+                begins = begins+(ends-begins)*0.1;
+               // $("#bg").css({"left":"begins+'px'"});
+                span.style.left=begins+"px";
+            },10);
+
+
+    });
+</script>
+</body>
+</html>
